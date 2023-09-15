@@ -57,13 +57,13 @@ addButton.innerText = "Ajouter";
 
 addButton.addEventListener('click', async () => {
   // Récupérez les valeurs des champs
-  const nomRecette = nameInput.value;
+  const nom_recette = nameInput.value;
   const lienImage = imageInput.value;
   const duree = durationInput.value;
   const note = ratingInput.value;
 
   // Affichez les valeurs dans la console
-  console.log("Nom de la recette : " + nomRecette);
+  console.log("Nom de la recette : " + nom_recette);
   console.log("Lien de l'image : " + lienImage);
   console.log("Durée : " + duree + " minutes");
   console.log("Note : " + note);
@@ -74,16 +74,17 @@ addButton.addEventListener('click', async () => {
     }),
     method: "POST",
     body: JSON.stringify({
-        nomRecette, 
+        nom_recette, 
         lienImage, 
         duree, 
         note
     }),
   })
+  console.log(response)
   const data = await response.json()
   console.log(data)
 
-  createRecipeCard(nomRecette, lienImage, duree, note)
+  createRecipeCard(nom_recette, lienImage, duree, note)
 
   // Réinitialisez les champs (facultatif)
   nameInput.value = "";
